@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+      .important{
+        font-size: xx-large;
+        font-weight: bold;
+      }
+      .blue{
+        color:blue;
+      }
+
+     </style>
+<!-- CDN 방식으로 환경설정 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <script>
+     /* 
+      CSS 스타일 적용
+
+      가. addClass("클래스1  클래스2") - 하나 이상의 클래스 적용
+      나. removeclass("클래스1  클래스2") - 하나 이상의 클래스 제거
+      다. toggleClass("클래스1  클래스2") - 번갈아 addClass/removeClass 적용
+      라. css(속성명, 속성값)
+          css({속성명:속성값, 속성명:속성값})
+      */
+
+     $(document).ready(function(){
+
+      $("#large").on("click", function(){});
+        $("p, h2").addClass("important blue"); // important, blue 클래스가 동시에 적용
+
+      $("#normal").on("click", function(){});
+        $("p").removeClass("important blue"); 
+
+      $("#toggle").on("click", function(){});
+        $("p").toggleClass("important blue");
+     });
+
+    
+    </script>
+
+</head>
+<body>
+  <button id="get">출력</button>
+<button id="set">설정</button>
+<hr>
+<p>Hello <em>world</em>!!!</p>
+주소:<input type="text" name="userid" id="addr1"><br>
+배송주소<input type="text" name="passwd" id="addr2"><br>
+<a href="http://www.google.com">link</a>
+<div id="result"></div>
+
+</body>  
+</html>

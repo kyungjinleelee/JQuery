@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     
+<!-- CDN 방식으로 환경설정 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <script>
+     $(document).ready(function(){
+
+        $("#ok").on("click", function(){
+            // https://reqres.in/api/users?page=2 비동기 요청
+            $.ajax({
+                type:"get", // get 방식인지 post 방식인지
+                url: "https://reqres.in/api/users",
+                data:{
+                    page:2
+                }, // 여기까지 요청 코드
+                dataType:'json',
+                success:function(data, status, xhr){
+                    console.log(data);
+                    $("#result").text(data);
+                },
+                error:function(xhr,status,error){
+                    console.log("error 발생");
+                } // 여기까지 응답 코드
+
+        });
+        });
+
+     });
+    </script>
+
+</head>
+<body>
+  <button id="ok">요청</button><br>
+  <div id="result"></div>
+  <!-- 요청하면 응답 데이터 출력하기 -->
+  
+  
+
+</body>  
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     
+<!-- CDN 방식으로 환경설정 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <script>
+
+      
+     $(document).ready(function(){
+
+      // button 이벤트 처리
+      $("#ok").on("click  mouseover", function(){ // 'on 메서드' = 하나의 이벤트 소스에 여러개 연결 가능
+        console.log("OK");
+        console.log(this);    // this 값은 버튼이 나옴 (JS객체)
+        console.log($(this).text());    // jQuery 객체 
+        // this를 쓰면 이벤트 소스를 핸들링 할 수 있음)
+
+
+        console.log(event);    // Event 객체
+        console.log(event.target);    // Event 객체를 이용해서 이벤트 소스객체 참조 가능
+      });
+     
+
+      // text 이벤트 처리
+      $("#txtInput").on("keyup", function(){
+        console.log("txtInput");
+        console.log($(this).val()); // 내가 입력한 값(value)을 갖고옴
+      });
+
+
+      // select 이벤트 처리
+      $("select").on("change", function(){
+        console.log($(this).val());   // select로 선택 시 값 얻어오기 
+        // 또는 console.log($(":selected".text()));
+      });
+
+
+      // submit 이벤트 처리 (값 입력 안하면 안 넘어가게 하는)
+      $("form").on("submit", function(){
+        // 아이디는 필수 항목 처리 (length 값 0 주기)
+        var id = $("userid").val();
+        if(id.length==0){
+          event.preventDefault();
+          alert("아이디는 필수");
+          $("#userid").focus();
+        }
+      });
+
+
+     });
+    </script>
+
+</head>
+<body>
+  <button id="ok">OK</button><br>
+  text:<input type="text" id="txtInput" /> <br>
+  <button id="hover">hover</button><br>
+  <form action="http://www.google.com">
+  아이디<input type="text" name="userid" id="userid"><br>
+  비밀번호<input type="text" name="passwd"><br>
+  <select name="fruit">
+   <option value="사과">사과</option>
+   <option value="바나나">바나나</option>
+   <option value="수박">수박</option>
+  </select><br>
+   사과<input type="checkbox" name="checkbox" id="checkbox" checked>
+  <input type="submit" value="전송">
+  </form>
+</body>  
+</html>
